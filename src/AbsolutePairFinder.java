@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class AbsolutePairFinder {
 
     public static void main(String[] args) {
@@ -15,27 +17,26 @@ public class AbsolutePairFinder {
     }
 
     public static void printAbsolutePair(int[] array) {
-        int firstNumber = 0;
-        int secondNumber = 0;
-        int maxAbsoluteSum = 0;
+        if (array.length < 2) {
+            System.out.println("For array: " + Arrays.toString(array) +
+                    ", there is no pair of absolute numbers.");
+            return;
+        }
 
-        for (int i = 0; i < array.length - 1; i++) {
-            for (int j = i + 1; j < array.length; j++) {
-                int sum = Math.abs(array[i]) + Math.abs(array[j]);
-                if (sum > maxAbsoluteSum) {
-                    maxAbsoluteSum = sum;
-                    firstNumber = array[i];
-                    secondNumber = array[j];
-                }
+        int firstNumber = Integer.MIN_VALUE;
+        int secondNumber = Integer.MIN_VALUE;
+
+        for (int i = 0; i < array.length; i++) {
+            int currentNumber = array[i];
+            if (Math.abs(currentNumber) > Math.abs(firstNumber)) {
+                secondNumber = firstNumber;
+                firstNumber = currentNumber;
+            } else if (Math.abs(currentNumber) > Math.abs(secondNumber)) {
+                secondNumber = currentNumber;
             }
         }
 
-        if (maxAbsoluteSum > 0) {
-            System.out.println("For array: " + java.util.Arrays.toString(array) +
-                    ", the highest absolute pair is: " + firstNumber + " and |" + secondNumber + "|");
-        } else {
-            System.out.println("For array: " + java.util.Arrays.toString(array) +
-                    ", there is no pair of absolute numbers.");
-        }
+        System.out.println("For array: " + Arrays.toString(array) +
+                ", the highest absolute pair is: " + firstNumber + " and " + secondNumber);
     }
 }
