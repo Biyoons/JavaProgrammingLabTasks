@@ -1,5 +1,5 @@
 
-public class Pigeon extends Bird {
+public class Pigeon extends Bird implements AnimalBehavior, AnimalMove {
     private String species;
 
     public Pigeon() {
@@ -35,5 +35,15 @@ public class Pigeon extends Bird {
                 ", featherColor='" + getFeatherColor() + '\'' +
                 ", species='" + species + '\'' +
                 '}';
+    }
+
+    @Override
+    public void sleep() {
+        System.out.println("Pigeon Özbilenler is sleeping.");
+    }
+
+    @Override
+    public void move() {
+        System.out.println("Pigeon fly.");
     }
 }

@@ -1,5 +1,5 @@
 
-public class Blowfish extends Fish {
+public class Blowfish extends Fish implements AnimalBehavior, AnimalMove {
     public Blowfish() {
         super();
     }
@@ -21,4 +21,15 @@ public class Blowfish extends Fish {
     public void puff() {
         System.out.println("Blowfish Özbilenler is puffing.");
     }
+
+    @Override
+    public void sleep() {
+        System.out.println("Blowfish Özbilenler is sleeping.");
+    }
+
+    @Override
+    public void move() {
+        System.out.println("Blowfish swim.");
+    }
 }
+

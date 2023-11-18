@@ -1,8 +1,14 @@
 import java.util.Scanner;
 
-public class Staff extends Person {
+public class Staff extends Person implements Salary {
     String education, position;
 
+    @Override
+    public void salaryToPay(int hours, double rate) {
+        double salary = hours * rate;
+        System.out.println("Salary: " + salary + " Özbilenler 62863");
+    }
+    
     void initialize1(String mySurname, String myStudentID) {
         initialize(mySurname, myStudentID);
         Scanner scanner = new Scanner(System.in);
